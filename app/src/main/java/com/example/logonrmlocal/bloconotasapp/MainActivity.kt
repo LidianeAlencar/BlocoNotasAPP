@@ -2,15 +2,15 @@ package com.example.logonrmlocal.bloconotasapp
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import com.example.logonrmlocal.bloconotasapp.model.Nota
+import com.example.logonrmlocal.bloconotasapp.view.formulario.FormularioActivity
 import com.example.logonrmlocal.bloconotasapp.view.main.MainListAdapter
 import com.example.logonrmlocal.bloconotasapp.view.main.MainViewModel
 
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
     private var adapter: MainListAdapter? = null
+    val FORMULARIO_REQUEST_CODE = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,9 @@ class MainActivity : AppCompatActivity() {
 
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val formularioIntent = Intent(this, FormularioActivity::class.java)
+
+            startActivityForResult(formularioIntent , FORMULARIO_REQUEST_CODE)
         }
     }
 

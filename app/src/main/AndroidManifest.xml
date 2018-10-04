@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.formulario.FormularioActivity" />
+        <activity android:name=".view.formulario.FormActivity"></activity>
     </application>
 
 </manifest>
