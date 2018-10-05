@@ -1,9 +1,11 @@
 package com.example.logonrmlocal.bloconotasapp.view.formulario
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.example.logonrmlocal.bloconotasapp.R
 import com.example.logonrmlocal.bloconotasapp.model.ResponseStatus
 import kotlinx.android.synthetic.main.activity_formulario.*
@@ -33,9 +35,12 @@ class FormularioActivity : AppCompatActivity() {
 
     private var responseStatusObserver = Observer<ResponseStatus>{
         if (it?.successo == true){
-
+            setResult(Activity.RESULT_OK)
+            finish()
         }else{
-
+            Toast.makeText(this,
+                    it?.mensagem,
+                    Toast.LENGTH_SHORT).show()
         }
     }
 

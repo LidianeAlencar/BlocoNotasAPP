@@ -1,5 +1,6 @@
 package com.example.logonrmlocal.bloconotasapp
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -87,4 +88,18 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            FORMULARIO_REQUEST_CODE -> {
+                when(resultCode){
+                    Activity.RESULT_OK -> {mainViewModel.buscarTodos()}
+                    Activity.RESULT_CANCELED -> {}
+                }
+            }
+        }
+    }
+
+
 }
